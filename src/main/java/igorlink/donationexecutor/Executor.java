@@ -27,7 +27,7 @@ public class Executor {
     public static String nameOfStreamerPlayer;
     public static String nameOfSecondStreamerPlayer;
     public static List<String> executionsNamesList = new ArrayList<>(Arrays.asList("ShitToInventory", "Lesch", "DropActiveItem",
-            "PowerKick", "ClearLastDeathDrop", "SpawnCreeper", "GiveDiamonds", "GiveStackOfDiamonds", "GiveBread",
+            "PowerKick","SpawnCreeper", "GiveDiamonds", "GiveStackOfDiamonds", "GiveBread",
             "CallNKVD", "CallStalin", "RandomChange", "TamedBecomesEnemies", "HalfHeart", "BigBoom", "Nekoglai", "SetNight", "SetDay", "GiveIronSet",
             "GiveIronSword", "GiveDiamondSet", "GiveDiamondSword", "SpawnTamedDog", "SpawnTamedCat", "HealPlayer", "GiveIronKirka", "GiveDiamondKirka",
             "KillStalins", "TakeOffBlock"));
@@ -70,7 +70,6 @@ public class Executor {
             case "Lesch" -> lesch(streamerPlayer, validDonationUsername,fullDonationAmount);
             case "DropActiveItem" -> dropActiveItem(streamerPlayer, validDonationUsername,fullDonationAmount);
             case "PowerKick" -> powerKick(streamerPlayer, validDonationUsername,fullDonationAmount);
-            case "ClearLastDeathDrop" -> clearLastDeathDrop(streamerPlayer, validDonationUsername,fullDonationAmount);
             case "SpawnCreeper" -> spawnCreeper(streamerPlayer, validDonationUsername,fullDonationAmount);
             case "GiveDiamonds" -> giveDiamonds(streamerPlayer, validDonationUsername,fullDonationAmount);
             case "GiveStackOfDiamonds" -> giveStackOfDiamonds(streamerPlayer, validDonationUsername,fullDonationAmount);
@@ -98,8 +97,6 @@ public class Executor {
         }
 
     }
-
-
 
 
     public static void shitToInventory (Player player, String donationUsername, String donationAmount) {
@@ -180,15 +177,6 @@ public class Executor {
             player.setHealth(0);
         }
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 1, 1);
-    }
-
-    public static void clearLastDeathDrop (Player player, String donationUsername, String donationAmount) {
-        //Remove Last Death Dropped Items
-        if (DonationExecutor.getInstance().streamerPlayersManager.getStreamerPlayer(player.getName()).removeDeathDrop()) {
-            announce(donationUsername, "уничтожил твой посмертный дроп", "уничтожил посмертный дроп", player, donationAmount, true);
-        } else {
-            announce(donationUsername, "безуспешно пытался уничтожить твой посмертный дроп...", "безуспешно пытался уничтожить посмертный дроп", player, donationAmount, true);
-        }
     }
 
     public static void spawnCreeper (Player player, String donationUsername, String donationAmount) {
